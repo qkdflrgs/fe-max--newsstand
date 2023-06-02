@@ -1,10 +1,13 @@
 .main-contents {
+  position: relative;
   margin-top: 25px;
   display: flex;
   gap: 50px;
   justify-content: center;
   align-items: center;
   &__prev {
+    position: absolute;
+    left: -74px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,6 +18,8 @@
     background-color: transparent;
   }
   &__next {
+    position: absolute;
+    right: -74px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,5 +44,12 @@
     align-items: center;
     background: $color-white;
     box-sizing: border-box;
+
+    > img {
+      width: 40%;
+    }
+  }
+  &__content:hover {
+    background-color: $color-offWhite;
   }
 }

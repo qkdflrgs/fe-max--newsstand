@@ -16,9 +16,17 @@
   &__press {
     @include typo(titleSM);
     color: $color-black;
+    text-decoration: none;
+  }
+  &__press:hover {
+    text-decoration: underline;
   }
   &__article {
     @include typo(bodySM);
     color: $color-gray500;
+    text-decoration: none;
+  }
+  &__article:hover {
+    text-decoration: underline;
   }
 }
