@@ -4,18 +4,10 @@ import { HeaderProps } from '../type.ts';
 export class Header {
   private props: HeaderProps;
   private element: HTMLElement;
-  private titleWrap: HTMLElement;
-  private titleImg: HTMLElement;
-  private title: HTMLElement;
-  private date: HTMLElement;
 
   constructor(props: HeaderProps) {
     this.props = props;
     this.element = createElement('header', { class: 'header' });
-    this.titleWrap = createElement('a', { class: 'header-title', href: 'index.html' });
-    this.titleImg = createElement('img', { class: 'header-title__img', src: './src/asset/icon/name=newspaper.svg' });
-    this.title = createElement('h1', { class: 'header-title__text' });
-    this.date = createElement('span', { class: 'header-date' });
     this.render();
   }
 
@@ -27,15 +19,20 @@ export class Header {
   }
 
   createTitle() {
-    this.title.textContent = this.props.title;
-    this.titleWrap.append(this.titleImg, this.title);
+    const titleWrap = createElement('a', { class: 'header-title', href: 'index.html' });
+    const titleImg = createElement('img', { class: 'header-title__img', src: './src/asset/icon/name=newspaper.svg' });
+    const title = createElement('h1', { class: 'header-title__text' });
 
-    return this.titleWrap;
+    title.textContent = this.props.title;
+    titleWrap.append(titleImg, title);
+
+    return titleWrap;
   }
 
   createDate() {
-    this.date.textContent = this.props.date;
+    const date = createElement('span', { class: 'header-date' });
+    date.textContent = this.props.date;
 
-    return this.date;
+    return date;
   }
 }

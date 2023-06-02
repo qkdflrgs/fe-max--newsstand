@@ -1,51 +1,46 @@
 import { createElement } from '../utils.ts';
-
-interface RollingNewsProps {
-  leftPress: string;
-  rightPress: string;
-  leftArticle: string;
-  rightArticle: string;
-}
+import { RollingNewsProps } from '../type.ts';
 
 export class RollingNews {
   private props: RollingNewsProps;
   private element: HTMLElement;
-  private rollingNewsWrap: HTMLElement;
-  private rollingNews: HTMLElement;
-  private press: HTMLElement;
-  private article: HTMLElement;
 
   constructor(props: RollingNewsProps) {
     this.props = props;
     this.element = createElement('main', { class: 'main' });
-    this.rollingNewsWrap = createElement('section', { class: 'rolling-news' });
-    this.rollingNews = createElement('div', { class: 'news-bar' });
-    this.press = createElement('a', { class: 'news-bar__press', href: '#' });
-    this.article = createElement('a', { class: 'news-bar__article', href: '#' });
     this.render();
   }
 
   render() {
-    const app = document.querySelector('.app');
+    const app: HTMLElement | null = document.querySelector('.app');
+    const rollingNewsWrap: HTMLElement = createElement('section', { class: 'rolling-news' });
 
-    this.rollingNewsWrap.append(this.createLeftRolling(), this.createRightRolling());
-    this.element.append(this.rollingNewsWrap);
+    rollingNewsWrap.append(this.createLeftRolling(), this.createRightRolling());
+    this.element.append(rollingNewsWrap);
     app?.append(this.element);
   }
 
   createLeftRolling(): HTMLElement {
-    this.press.textContent = this.props.leftPress;
-    this.article.textContent = this.props.leftArticle;
-    this.rollingNews.append(this.press, this.article);
+    const rollingNews: HTMLElement = createElement('div', { class: 'news-bar' });
+    const press: HTMLElement = createElement('a', { class: 'news-bar__press', href: '#' });
+    const article: HTMLElement = createElement('a', { class: 'news-bar__article', href: '#' });
 
-    return this.rollingNews;
+    press.textContent = this.props.leftPress;
+    article.textContent = this.props.leftArticle;
+    rollingNews.append(press, article);
+
+    return rollingNews;
   }
 
   createRightRolling(): HTMLElement {
-    this.press.textContent = this.props.rightPress;
-    this.article.textContent = this.props.rightArticle;
-    this.rollingNews.append(this.press, this.article);
+    const rollingNews: HTMLElement = createElement('div', { class: 'news-bar' });
+    const press: HTMLElement = createElement('a', { class: 'news-bar__press', href: '#' });
+    const article: HTMLElement = createElement('a', { class: 'news-bar__article', href: '#' });
 
-    return this.rollingNews;
+    press.textContent = this.props.leftPress;
+    article.textContent = this.props.leftArticle;
+    rollingNews.append(press, article);
+
+    return rollingNews;
   }
 }
