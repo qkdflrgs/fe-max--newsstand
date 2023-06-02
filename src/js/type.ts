@@ -26,3 +26,19 @@ export interface TapviewProps {
   allBtn: string;
   subscribeBtn: string;
 }
+
+export interface RollingNewsProps {
+  leftPress: string;
+  rightPress: string;
+  leftArticle: string;
+  rightArticle: string;
+}
+
+export interface GripProps {
+  pressList: { src: string; alt: string }[];
+}
+
+export interface MainContentsProps {
+  prevBtnImg: string;
+  nextBtnImg: string;
+}
