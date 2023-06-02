@@ -12,8 +12,8 @@ export class RollingNews {
   }
 
   render() {
-    const app: HTMLElement | null = document.querySelector('.app');
-    const rollingNewsWrap: HTMLElement = createElement('section', { class: 'rolling-news' });
+    const app = document.querySelector('.app');
+    const rollingNewsWrap = createElement('section', { class: 'rolling-news' });
 
     rollingNewsWrap.append(this.createLeftRolling(), this.createRightRolling());
     this.element.append(rollingNewsWrap);
@@ -21,9 +21,9 @@ export class RollingNews {
   }
 
   createLeftRolling(): HTMLElement {
-    const rollingNews: HTMLElement = createElement('div', { class: 'news-bar' });
-    const press: HTMLElement = createElement('a', { class: 'news-bar__press', href: '#' });
-    const article: HTMLElement = createElement('a', { class: 'news-bar__article', href: '#' });
+    const rollingNews = createElement('div', { class: 'news-bar' });
+    const press = createElement('a', { class: 'news-bar__press', href: '#' });
+    const article = createElement('a', { class: 'news-bar__article', href: '#' });
 
     press.textContent = this.props.leftPress;
     article.textContent = this.props.leftArticle;
@@ -33,9 +33,9 @@ export class RollingNews {
   }
 
   createRightRolling(): HTMLElement {
-    const rollingNews: HTMLElement = createElement('div', { class: 'news-bar' });
-    const press: HTMLElement = createElement('a', { class: 'news-bar__press', href: '#' });
-    const article: HTMLElement = createElement('a', { class: 'news-bar__article', href: '#' });
+    const rollingNews = createElement('div', { class: 'news-bar' });
+    const press = createElement('a', { class: 'news-bar__press', href: '#' });
+    const article = createElement('a', { class: 'news-bar__article', href: '#' });
 
     press.textContent = this.props.leftPress;
     article.textContent = this.props.leftArticle;
