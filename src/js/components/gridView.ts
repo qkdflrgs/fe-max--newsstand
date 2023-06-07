@@ -1,4 +1,4 @@
-import { suffleArray, createElement } from '../utils.ts';
+import { shuffleArray, createElement } from '../utils.ts';
 import { GridProps } from '../type.ts';
 import { NUMBER_OF_GRID_CONTENTS } from '../constant.ts';
 
@@ -19,7 +19,7 @@ export class GridView {
   }
 
   createGridContent() {
-    const randomList = suffleArray(this.props.pressList);
+    const randomList = shuffleArray(this.props.pressList);
     for (let i = 0; i < NUMBER_OF_GRID_CONTENTS; i++) {
       const imgSrc: string = randomList[i].src;
       const imgAlt: string = randomList[i].alt;
