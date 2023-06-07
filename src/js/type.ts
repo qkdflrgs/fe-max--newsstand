@@ -34,11 +34,16 @@ export interface RollingNewsProps {
   rightArticle: string;
 }
 
-export interface GripProps {
+export interface GridProps {
   pressList: { src: string; alt: string }[];
 }
 
 export interface MainContentsProps {
   prevBtnImg: string;
   nextBtnImg: string;
+}
+
+export interface ListProps {
+  category: string[];
+  newsList: string[];
 }
