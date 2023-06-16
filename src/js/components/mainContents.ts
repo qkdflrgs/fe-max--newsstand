@@ -1,14 +1,16 @@
+import fetchedData from '../../../db.json';
 import { createElement } from '../utils.ts';
 import { FIRST_GRID_PAGE, LAST_GRID_PAGE } from '../constant.ts';
 import { MainContentsProps } from '../type.ts';
 import { GridView } from './gridView/gridView.ts';
 import { ListView } from './listView/listView.ts';
 import { store } from '../store/store.ts';
-import { nextGridPageAction, prevGridPageAction } from '../action.ts';
+import { nextGridPageAction, prevGridPageAction, prevListPageAction, nextListPageAction } from '../action.ts';
 
 const MainContentsProps = {
   prevBtnImg: './src/asset/icon/LeftButton.svg',
   nextBtnImg: './src/asset/icon/RightButton.svg',
+  newsList: fetchedData.newsList,
 };
 
 export class MainContents {
@@ -75,14 +77,26 @@ export class MainContents {
     store.subscribe(this.render.bind(this));
     this.prevBtn.addEventListener('click', () => {
       const state = store.getState();
-      if (state.pageIndex === FIRST_GRID_PAGE) return;
-      store.dispatch(prevGridPageAction);
+      if (state.isGrid) {
+        if (state.pageIndex === FIRST_GRID_PAGE) return;
+        store.dispatch(prevGridPageAction);
+      }
+
+      if (!state.isGrid) {
+        store.dispatch(prevListPageAction);
+      }
     });
 
     this.nextBtn.addEventListener('click', () => {
       const state = store.getState();
-      if (state.pageIndex === LAST_GRID_PAGE) return;
-      store.dispatch(nextGridPageAction);
+      if (state.isGrid) {
+        if (state.isGrid && state.pageIndex === LAST_GRID_PAGE) return;
+        store.dispatch(nextGridPageAction);
+      }
+
+      if (!state.isGrid) {
+        store.dispatch(nextListPageAction);
+      }
     });
   }
 }

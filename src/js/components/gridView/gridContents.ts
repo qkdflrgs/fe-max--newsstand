@@ -2,6 +2,7 @@ import fetchedData from '../../../../db.json';
 import { GridContentsProps } from '../../type.ts';
 import { store } from '../../store/store.ts';
 import { shuffleArray } from '../../utils.ts';
+import { NUMBER_OF_GRID_CONTENTS } from '../../constant.ts';
 
 const GridContentsProps = {
   pressList: shuffleArray([...fetchedData.pressList]),
@@ -18,6 +19,7 @@ export class GridContents {
 
   render() {
     const state = store.getState();
+
     if (!state.isGrid) return;
     state.isAllPress ? this.renderAllPress(state.pageIndex) : this.renderSubscribedPress(state.pageIndex);
   }
@@ -25,7 +27,8 @@ export class GridContents {
   renderAllPress(index: number) {
     const element = document.querySelectorAll('.grid-view__img');
     let count: number = 0;
-    for (let i = 0 + 24 * index; i < 24 + 24 * index; i++) {
+
+    for (let i = NUMBER_OF_GRID_CONTENTS * index; i < NUMBER_OF_GRID_CONTENTS + NUMBER_OF_GRID_CONTENTS * index; i++) {
       element[count].setAttribute('src', this.props.pressList[i].src);
       element[count].setAttribute('alt', this.props.pressList[i].alt);
       count++;
@@ -35,7 +38,8 @@ export class GridContents {
   renderSubscribedPress(index: number) {
     const element = document.querySelectorAll('.grid-view__img');
     let count: number = 0;
-    for (let i = 0 + 24 * index; i < 24 + 24 * index; i++) {
+
+    for (let i = NUMBER_OF_GRID_CONTENTS * index; i < NUMBER_OF_GRID_CONTENTS + NUMBER_OF_GRID_CONTENTS * index; i++) {
       if (this.props.subscribedPress[i]) {
         element[count].setAttribute('src', this.props.subscribedPress[i].src);
         element[count].setAttribute('alt', this.props.subscribedPress[i].alt);
