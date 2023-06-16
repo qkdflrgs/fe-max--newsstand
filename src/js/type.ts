@@ -3,6 +3,7 @@ export interface State {
   isAllPress: boolean;
   isGrid: boolean;
   pageIndex: number;
+  curCategory: any;
 }
 
 export interface Action {
@@ -47,6 +48,7 @@ export interface GridContentsProps {
 export interface MainContentsProps {
   prevBtnImg: string;
   nextBtnImg: string;
+  newsList: any;
 }
 
 export interface ListViewProps {
