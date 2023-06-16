@@ -6,7 +6,8 @@ const defaultState: State = {
   date: systemDate,
   isAllPress: true,
   isGrid: true,
-  gridIndex: 0,
+  pageIndex: 0,
+  curCategory: '종합/경제',
 };
 
 const createStore = (reducer: Reducer, defaultState: State) => {

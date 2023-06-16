@@ -6,7 +6,7 @@ body {
 .list-tap {
   box-sizing: border-box;
   width: 930px;
-  height: 40px;
+  height: 42px;
   background-color: $color-offWhite;
   border: 1px solid $color-gray100;
   &__category {
@@ -51,6 +51,7 @@ body {
     color: $color-gray200;
     > ul {
       @include typo('bodyMD');
+      width: 530px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -65,6 +66,35 @@ body {
   align-items: center;
   gap: 16px;
   color: $color-gray400;
+  &__img {
+    height: 20px;
+  }
+}
+
+.contents-thumbnail {
+  &__img {
+    box-sizing: border-box;
+    width: 320px;
+    height: 200px;
+    border: 1px solid $color-gray100;
+  }
+  &__title {
+    @include typo('bodyMD');
+    width: 320px;
+    color: $color-black;
+  }
+}
+
+.contents-news {
+  &__list {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__edit {
+    @include typo('bodySM');
+    color: $color-gray200;
+  }
 }
 
 .subscribe-btn {
@@ -83,10 +113,21 @@ body {
 
 .active-tap {
   @include typo('titleSM');
+  box-sizing: border-box;
   width: 166px;
-  height: 40px;
+  background: linear-gradient(to right, #7890e7, $color-primary);
+  background-size: 200% 100%;
   color: $color-white;
-  background-color: transparent;
   border: none;
   padding: 0px 16px;
+  animation: fillAnimation 20s linear infinite;
+}
+
+@keyframes fillAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
